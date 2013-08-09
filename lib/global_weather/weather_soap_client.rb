@@ -1,6 +1,4 @@
 require 'savon'
-
-#module GlobalWeather
 	class WeatherSoapClient
 		attr_reader :client
 
@@ -49,5 +47,4 @@ require 'savon'
 				 }
 			end
 		end
-	end
-#end
+end
