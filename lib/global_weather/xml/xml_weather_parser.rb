@@ -28,7 +28,7 @@ class XMLWeatherParser
 				 	:city => @city,
 				 	:country => @country
 				}
-		}.first
+		}
 
 	end
 end
