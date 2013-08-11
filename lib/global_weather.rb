@@ -3,9 +3,9 @@ require 'global_weather/weather_soap_client'
 
 module GlobalWeather
    
-   WSDL_URL = 'https://api.taxcloud.net/1.0/?wsdl'
+   WSDL_URL = 'http://www.webservicex.net/globalweather.asmx?WSDL'
 
-   @soap_client = WeatherSoapClient.new(Savon.client(wsdl: 'http://www.webservicex.net/globalweather.asmx?WSDL'))
+   @soap_client = WeatherSoapClient.new(Savon.client(wsdl: WSDL_URL))
 
    def self.weather(city, country)
    	 @soap_client.weather(city, country)
