@@ -1,6 +1,7 @@
 require 'savon'
 require 'global_weather/xml/xml_weather_parser'
-	class WeatherSoapClient
+require 'global_weather/xml/xml_cities_parser'
+class WeatherSoapClient
 		attr_reader :client
 
 		def initialize(client)
@@ -10,41 +11,15 @@ require 'global_weather/xml/xml_weather_parser'
 		def weather(city, country)
 			response = client.call( :get_weather, message: { 'CityName' => city, 'CountryName' => country })
 			if response.success?
-				XMLWeatherParser.new city, country, response.body[:get_weather_response][:get_weather_result]
+				XMLWeatherParser.new(city, country, response.body[:get_weather_response][:get_weather_result]).to_weather
 			end
 		end
 
 		def cities(country)
 			response = client.call(:get_cities_by_country, message: { 'CountryName' => country })
 			if response.success?
-				 to_city_hash response.body[:get_cities_by_country_response][:get_cities_by_country_result]
+				 XMLCitiesParser.new(response.body[:get_cities_by_country_response][:get_cities_by_country_result]).to_cities
 			end
 		end
 
-		private
-
-		def to_city_hash(body)
-			(Nokogiri.XML body).children.xpath('//NewDataSet/Table').map do |node|
-				{
-					:county => node.children.first.inner_text,
-					:city => node.children.last.inner_text,
-				}
-			end
-		end
-		
-		def to_weather_hash(body)
-
-			(Nokogiri.XML body).children.xpath('//CurrentWeather').map do |node|
-				 {  :wind => node.xpath('//Wind').inner_text,
-				 	:visibility => node.xpath('//Visibility').inner_text,
-				 	:skyConditions => node.xpath('//SkyConditions').inner_text,
-				 	:temperature => node.xpath('//Temperature').inner_text,
-				 	:dewPoint => node.xpath('//DewPoint').inner_text,
-				 	:relativeHumidity => node.xpath('//DewPoint').inner_text,
-				 	:pressure => node.xpath('//Pressure').inner_text,
-				 	:status => node.xpath('//Status').inner_text,
-				 	:time => node.xpath('//Status').inner_text
-				 }
-			end
-		end
 end
