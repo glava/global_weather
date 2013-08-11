@@ -4,6 +4,7 @@ class XMLWeatherParser
 
 	
 	def initialize(city, country, body)
+		puts "HHHHHH"
 		@body = body
 		@city = city
 		@country = country
@@ -27,7 +28,7 @@ class XMLWeatherParser
 				 	:city => @city,
 				 	:country => @country
 				}
-		}
+		}.first
 
 	end
 end
