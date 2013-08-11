@@ -1,17 +1,16 @@
 require 'savon'
+require 'global_weather/xml/xml_weather_parser'
 	class WeatherSoapClient
 		attr_reader :client
 
-		def initialize(wsd_link)
-			@client = Savon.client(wsdl: wsd_link)
+		def initialize(client)
+			@client = client
 		end
 
 		def weather(city, country)
-			response = client.call(
-				:get_weather, 
-				message: { 'CityName' => city, 'CountryName' => country })
+			response = client.call( :get_weather, message: { 'CityName' => city, 'CountryName' => country })
 			if response.success?
-				to_weather_hash response.body[:get_weather_response][:get_weather_result]
+				XMLWeatherParser city, country, response.body[:get_weather_response][:get_weather_result]
 			end
 		end
 
@@ -34,6 +33,7 @@ require 'savon'
 		end
 		
 		def to_weather_hash(body)
+
 			(Nokogiri.XML body).children.xpath('//CurrentWeather').map do |node|
 				 {  :wind => node.xpath('//Wind').inner_text,
 				 	:visibility => node.xpath('//Visibility').inner_text,
