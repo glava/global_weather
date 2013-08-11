@@ -1,0 +1,2 @@
+class DataNotFoundException < GlobalWeatherException
+end
