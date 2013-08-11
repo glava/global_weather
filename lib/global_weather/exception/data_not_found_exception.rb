@@ -1,2 +1,3 @@
+require 'global_weather/exception/global_weather_exception'
 class DataNotFoundException < GlobalWeatherException
 end
