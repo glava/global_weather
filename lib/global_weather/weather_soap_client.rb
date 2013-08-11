@@ -13,7 +13,7 @@ class WeatherSoapClient
 		def weather(city, country)
 			response = client.call( :get_weather, message: { 'CityName' => city, 'CountryName' => country })
 			if response.success?
-				if response.body[:get_weather_response][:get_weather_result]} == "Data Not Found"
+				if response.body[:get_weather_response][:get_weather_result] == "Data Not Found"
 					raise DataNotFoundException.new("Data can't be found for #{city} and #{country}")
 				else
 					XMLWeatherParser.new(city, country, response.body[:get_weather_response][:get_weather_result]).to_weather
