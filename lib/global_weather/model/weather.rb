@@ -3,15 +3,17 @@ class Weather
 	attr_reader :temperature,:dewPoint,:relativeHumidity, :pressure, :status, :time  
 
 	def initialize(params)
-		@city =params[:city]
-		@country =params[:country]
-		@wind = params[:wind]
-		@visibility = params[:visibility]
-		@skyConditions = params[:skyConditions]
-		@temperature = params[:temperature]
-		@dewPoint = params[:dewPoint]
-		@relativeHumidity = params[:relativeHumidity]
-		@pressure = params[:pressure]
-		@time = params[:time]
+		unless(params.nil?)
+			@city =params[:city]
+			@country =params[:country]
+			@wind = params[:wind]
+			@visibility = params[:visibility]
+			@skyConditions = params[:skyConditions]
+			@temperature = params[:temperature]
+			@dewPoint = params[:dewPoint]
+			@relativeHumidity = params[:relativeHumidity]
+			@pressure = params[:pressure]
+			@time = params[:time]
+		end
 	end
 end
