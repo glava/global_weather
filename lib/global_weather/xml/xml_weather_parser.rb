@@ -15,7 +15,7 @@ class XMLWeatherParser
 	end
 
 	def to_hash
-		(Nokogiri.XML @body).search('CurrentWeather').each{|node| 
+		(Nokogiri.XML @body).search('CurrentWeather').map{|node| 
 			 {      :wind => node.at('Wind').inner_text,
 				 	:visibility => node.at('Visibility').inner_text,
 				 	:skyConditions => node.at('SkyConditions').inner_text,
