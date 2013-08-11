@@ -3,8 +3,10 @@ require 'global_weather/weather_soap_client'
 
 module GlobalWeather
    
-   def self.get_soap_client
-   	 WeatherSoapClient.new('http://www.webservicex.net/globalweather.asmx?WSDL')
+   @soap_client = WeatherSoapClient.new('http://www.webservicex.net/globalweather.asmx?WSDL')
+
+   def self.weather(city, country)
+   	 @soap_client.weather(city, country)
    end
 
 end

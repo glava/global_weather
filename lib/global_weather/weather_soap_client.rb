@@ -6,7 +6,7 @@ require 'savon'
 			@client = Savon.client(wsdl: wsd_link)
 		end
 
-		def get_weather(city, country)
+		def weather(city, country)
 			response = client.call(
 				:get_weather, 
 				message: { 'CityName' => city, 'CountryName' => country })
