@@ -10,7 +10,7 @@ require 'global_weather/xml/xml_weather_parser'
 		def weather(city, country)
 			response = client.call( :get_weather, message: { 'CityName' => city, 'CountryName' => country })
 			if response.success?
-				XMLWeatherParser city, country, response.body[:get_weather_response][:get_weather_result]
+				XMLWeatherParser.new city, country, response.body[:get_weather_response][:get_weather_result]
 			end
 		end
 
