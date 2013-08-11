@@ -1,10 +1,10 @@
+require 'global_weather/model/weather'
 class XMLWeatherParser
 
 	attr_reader :body, :city, :country
 
 	
 	def initialize(city, country, body)
-		puts "HHHHHH"
 		@body = body
 		@city = city
 		@country = country
@@ -28,7 +28,7 @@ class XMLWeatherParser
 				 	:city => @city,
 				 	:country => @country
 				}
-		}
+		}.first
 
 	end
 end
