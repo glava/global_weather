@@ -1,0 +1,199 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.webservicex.net/globalweather.asmx?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '9569'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 11 Aug 2013 12:43:54 GMT
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+        xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://www.webserviceX.NET\"
+        xmlns:s=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\"
+        xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\" targetNamespace=\"http://www.webserviceX.NET\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"http://www.webserviceX.NET\">\r\n
+        \     <s:element name=\"GetWeather\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CityName\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CountryName\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetWeatherResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetWeatherResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCitiesByCountry\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CountryName\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCitiesByCountryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCitiesByCountryResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"string\"
+        nillable=\"true\" type=\"s:string\" />\r\n    </s:schema>\r\n  </wsdl:types>\r\n
+        \ <wsdl:message name=\"GetWeatherSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetWeather\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetWeatherSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetWeatherResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCitiesByCountrySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCitiesByCountry\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCitiesByCountrySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCitiesByCountryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetWeatherHttpGetIn\">\r\n
+        \   <wsdl:part name=\"CityName\" type=\"s:string\" />\r\n    <wsdl:part name=\"CountryName\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetWeatherHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:string\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetCitiesByCountryHttpGetIn\">\r\n    <wsdl:part name=\"CountryName\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCitiesByCountryHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:string\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetWeatherHttpPostIn\">\r\n    <wsdl:part name=\"CityName\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"CountryName\" type=\"s:string\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetWeatherHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:string\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetCitiesByCountryHttpPostIn\">\r\n    <wsdl:part name=\"CountryName\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCitiesByCountryHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:string\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:portType name=\"GlobalWeatherSoap\">\r\n    <wsdl:operation name=\"GetWeather\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        weather report for all major cities around the world.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetWeatherSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetWeatherSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCitiesByCountry\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        all major cities by country name(full / part).</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCitiesByCountrySoapIn\" />\r\n      <wsdl:output message=\"tns:GetCitiesByCountrySoapOut\"
+        />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:portType name=\"GlobalWeatherHttpGet\">\r\n
+        \   <wsdl:operation name=\"GetWeather\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        weather report for all major cities around the world.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetWeatherHttpGetIn\" />\r\n      <wsdl:output
+        message=\"tns:GetWeatherHttpGetOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCitiesByCountry\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        all major cities by country name(full / part).</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCitiesByCountryHttpGetIn\" />\r\n      <wsdl:output message=\"tns:GetCitiesByCountryHttpGetOut\"
+        />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:portType name=\"GlobalWeatherHttpPost\">\r\n
+        \   <wsdl:operation name=\"GetWeather\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        weather report for all major cities around the world.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetWeatherHttpPostIn\" />\r\n      <wsdl:output
+        message=\"tns:GetWeatherHttpPostOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCitiesByCountry\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Get
+        all major cities by country name(full / part).</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCitiesByCountryHttpPostIn\" />\r\n      <wsdl:output message=\"tns:GetCitiesByCountryHttpPostOut\"
+        />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:binding name=\"GlobalWeatherSoap\"
+        type=\"tns:GlobalWeatherSoap\">\r\n    <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\"
+        />\r\n    <wsdl:operation name=\"GetWeather\">\r\n      <soap:operation soapAction=\"http://www.webserviceX.NET/GetWeather\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCitiesByCountry\">\r\n      <soap:operation soapAction=\"http://www.webserviceX.NET/GetCitiesByCountry\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"GlobalWeatherSoap12\" type=\"tns:GlobalWeatherSoap\">\r\n
+        \   <soap12:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"GetWeather\">\r\n      <soap12:operation soapAction=\"http://www.webserviceX.NET/GetWeather\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCitiesByCountry\">\r\n      <soap12:operation soapAction=\"http://www.webserviceX.NET/GetCitiesByCountry\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"GlobalWeatherHttpGet\" type=\"tns:GlobalWeatherHttpGet\">\r\n
+        \   <http:binding verb=\"GET\" />\r\n    <wsdl:operation name=\"GetWeather\">\r\n
+        \     <http:operation location=\"/GetWeather\" />\r\n      <wsdl:input>\r\n
+        \       <http:urlEncoded />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n
+        \       <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCitiesByCountry\">\r\n      <http:operation
+        location=\"/GetCitiesByCountry\" />\r\n      <wsdl:input>\r\n        <http:urlEncoded
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"GlobalWeatherHttpPost\" type=\"tns:GlobalWeatherHttpPost\">\r\n
+        \   <http:binding verb=\"POST\" />\r\n    <wsdl:operation name=\"GetWeather\">\r\n
+        \     <http:operation location=\"/GetWeather\" />\r\n      <wsdl:input>\r\n
+        \       <mime:content type=\"application/x-www-form-urlencoded\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCitiesByCountry\">\r\n
+        \     <http:operation location=\"/GetCitiesByCountry\" />\r\n      <wsdl:input>\r\n
+        \       <mime:content type=\"application/x-www-form-urlencoded\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n  </wsdl:binding>\r\n  <wsdl:service name=\"GlobalWeather\">\r\n
+        \   <wsdl:port name=\"GlobalWeatherSoap\" binding=\"tns:GlobalWeatherSoap\">\r\n
+        \     <soap:address location=\"http://www.webservicex.net/globalweather.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"GlobalWeatherSoap12\" binding=\"tns:GlobalWeatherSoap12\">\r\n
+        \     <soap12:address location=\"http://www.webservicex.net/globalweather.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"GlobalWeatherHttpGet\" binding=\"tns:GlobalWeatherHttpGet\">\r\n
+        \     <http:address location=\"http://www.webservicex.net/globalweather.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"GlobalWeatherHttpPost\" binding=\"tns:GlobalWeatherHttpPost\">\r\n
+        \     <http:address location=\"http://www.webservicex.net/globalweather.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 12:43:50 GMT
+- request:
+    method: post
+    uri: http://www.webservicex.net/globalweather.asmx
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.webserviceX.NET"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:GetCitiesByCountry><tns:CountryName>Germanyss</tns:CountryName></tns:GetCitiesByCountry></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - ! '"http://www.webserviceX.NET/GetCitiesByCountry"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '373'
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '411'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 11 Aug 2013 12:44:01 GMT
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetCitiesByCountryResponse
+        xmlns="http://www.webserviceX.NET"><GetCitiesByCountryResult>&lt;NewDataSet
+        /&gt;</GetCitiesByCountryResult></GetCitiesByCountryResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 12:43:56 GMT
+recorded_with: VCR 2.5.0

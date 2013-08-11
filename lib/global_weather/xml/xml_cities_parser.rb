@@ -12,10 +12,10 @@ class XMLCitiesParser
 	end
 
 	def to_hash
-		(Nokogiri.XML @body).children.xpath('//NewDataSet/Table').map do |node|
+		(Nokogiri.XML @body).search('Table').map do |node|
 				{
-					:county => node.children.first.inner_text,
-					:city => node.children.last.inner_text,
+					:country => node.at('Country').inner_text,
+					:city => node.at('City').inner_text
 				}
 		end
 	end

@@ -1,8 +1,8 @@
 class City
-	attr_reader :city, :country
+	attr_reader :name, :country
 
 	def initialize(params)
-		@city =params[:city]
-		@country =params[:country]
+		@name = params[:city]
+		@country = params[:country]
 	end
 end

@@ -2,7 +2,6 @@ require 'global_weather/model/weather'
 class XMLWeatherParser
 
 	attr_reader :body, :city, :country
-
 	
 	def initialize(city, country, body)
 		@body = body
