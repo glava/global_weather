@@ -11,6 +11,7 @@ class WeatherSoapClient
 		def weather(city, country)
 			response = client.call( :get_weather, message: { 'CityName' => city, 'CountryName' => country })
 			if response.success?
+				puts "#{response.body[:get_weather_response][:get_weather_result]}"
 				XMLWeatherParser.new(city, country, response.body[:get_weather_response][:get_weather_result]).to_weather
 			end
 		end
