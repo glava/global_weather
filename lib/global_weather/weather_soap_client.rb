@@ -15,7 +15,7 @@ require 'savon'
 			end
 		end
 
-		def get_cities_by_country(country)
+		def cities(country)
 			response = client.call(:get_cities_by_country, message: { 'CountryName' => country })
 			if response.success?
 				 to_city_hash response.body[:get_cities_by_country_response][:get_cities_by_country_result]

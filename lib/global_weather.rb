@@ -9,4 +9,8 @@ module GlobalWeather
    	 @soap_client.weather(city, country)
    end
 
+   def self.cities(country)
+   	@soap_client.cities(country)
+   end
+
 end
