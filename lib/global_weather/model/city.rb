@@ -11,7 +11,7 @@ class City
   end
 
   def to_s
-    "City #{name} - #{country}"
+    "City: #{name} - #{country}"
   end
   
 end

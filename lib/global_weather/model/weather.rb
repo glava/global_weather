@@ -21,4 +21,5 @@ class Weather
       @time = params[:time]
     end
   end
+
 end
