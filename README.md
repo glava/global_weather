@@ -4,6 +4,14 @@ GlobalWeather is a wrapper gem around SOAP service for weather forecast.
 
 ## Installation
 
+First you need to build it, so run this inside of gem directory
+	
+	rake build
+
+Then install it
+	
+	rake install
+
 Add this line to your application's Gemfile:
 
     gem 'global_weather'
