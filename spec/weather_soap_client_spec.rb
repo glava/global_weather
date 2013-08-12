@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe WeatherSoapClient do
 
-  let(:client){WeatherSoapClient.new(Savon.client(wsdl: 'http://www.webservicex.net/globalweather.asmx?WSDL'))}
+  let(:client){WeatherSoapClient.new(
+    Savon.client(wsdl: 'http://www.webservicex.net/globalweather.asmx?WSDL'))}
 
   it "should be initialized with savon client" do
     client.should_not eql nil
   end
 
-  it "should weather for passed exsiting city {Berlin}" do
+  it "should retrun weather for passed exsiting city {Berlin}" do
     VCR.use_cassette('weather_berlin') do
-      client.weather('Berlin', 'Germany').city.should eql "Berlin"
+      client.weather('Berlin', 'Germany').should be_kind_of(Weather)
     end
   end
 
@@ -21,8 +22,7 @@ describe WeatherSoapClient do
       }.to raise_error
     end
   end
-
-
+  
   it "should raise DataNotFound exception if bad country" do
     VCR.use_cassette('weather_non_existing_country') do
       expect{
@@ -45,7 +45,7 @@ describe WeatherSoapClient do
     end
   end
 
-  it "should empty array for bad city" do
+  it "should return empty array for bad city" do
     VCR.use_cassette('bad_cities_request') do
       client.cities('Germanyss').size.should eql 0
     end

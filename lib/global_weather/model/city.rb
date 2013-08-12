@@ -1,3 +1,7 @@
+# City
+# Holds info about name and country
+# 
+# @author [goran]
 class City
   attr_reader :name, :country
 

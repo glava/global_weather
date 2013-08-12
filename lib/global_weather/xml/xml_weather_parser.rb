@@ -1,10 +1,16 @@
 require 'global_weather/model/weather'
+# Response XML parser for weather request.
+#
+# Converts xml from service to weather object
+# or to hash map.
+# 
+# @author [goran]
 class XMLWeatherParser
 
-  attr_reader :body, :city, :country
+  attr_reader :xml, :city, :country
   
-  def initialize(city, country, body)
-    @body = body
+  def initialize(city, country, xml)
+    @xml = xml
     @city = city
     @country = country
   end
@@ -14,7 +20,7 @@ class XMLWeatherParser
   end
 
   def to_hash
-    (Nokogiri.XML @body).search('CurrentWeather').map{|node| 
+    (Nokogiri.XML @xml).search('CurrentWeather').map{|node| 
        {      :wind => node.at('Wind').inner_text,
           :visibility => node.at('Visibility').inner_text,
           :skyConditions => node.at('SkyConditions').inner_text,

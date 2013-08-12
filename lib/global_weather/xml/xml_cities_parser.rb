@@ -1,10 +1,17 @@
 require 'global_weather/model/city'
+# Response XML parser for cities request.
+#
+# Converts xml from service to array of City objects or 
+# to array of hash maps.
+# 
+# 
+# @author [goran]
 class XMLCitiesParser
 
-  attr_reader :body
+  attr_reader :xml
   
-  def initialize(body)
-    @body = body
+  def initialize(xml)
+    @xml = xml
   end
 
   def to_cities
@@ -12,7 +19,7 @@ class XMLCitiesParser
   end
 
   def to_hash
-    (Nokogiri.XML @body).search('Table').map do |node|
+    (Nokogiri.XML @xml).search('Table').map do |node|
         {
           :country => node.at('Country').inner_text,
           :city => node.at('City').inner_text
