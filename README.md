@@ -1,6 +1,6 @@
 # GlobalWeather
 
-TODO: Write a gem description
+GlobalWeather is a wrapper gem around SOAP service for weather forecast.
 
 ## Installation
 
@@ -18,12 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+There are two methods on SOAP service 
 
-## Contributing
+To fetch cities 
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+```
+ GlobalWeather.cities('Germany')
+```
+
+And to fetch weather
+
+```
+ GlobalWeather.weather('Berlin', Germany')
+```
