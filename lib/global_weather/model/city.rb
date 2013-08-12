@@ -9,5 +9,9 @@ class City
     @name = params[:city]
     @country = params[:country]
   end
+
+  def to_s
+    "City #{name} - #{country}"
+  end
   
 end

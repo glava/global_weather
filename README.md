@@ -24,6 +24,12 @@ Or install it yourself as:
 
     $ gem install global_weather
 
+## Dependencies
+
+This gem uses savon for SOAP communication.
+
+	gem 'savon'
+
 ## Usage
 
 There are two methods on SOAP service 
